@@ -11,7 +11,7 @@ require("../../control/customerprofilecontrol.php");
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" >
 
-    <title>Online Pharmacy</title>
+    <title>Edit Profile</title>
     </head>
     <body>
         <h1>Online Pharmacy</h1>
@@ -45,23 +45,23 @@ require("../../control/customerprofilecontrol.php");
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input  type="text" placeholder="password" name="password" autocomplete="off"value=" <?php echo $row[5];?>">
+        <input  type="text" placeholder="password" name="password" autocomplete="off"value="<?php echo $row[5];?>">
       </div>
 
       <div class="form-group">
         <label for="dob">Date of Birth:</label>
-        <input  type="date" class="form-control" placeholder="dob" name="dob" autocomplete="off" value="<?php echo $row[6];?>">
+        <input  type="date" class="form-control" placeholder="dob" name="dob" autocomplete="off" value="<?php echo date('Y-m-d', strtotime($row[6]))?>">
       </div>
 
       <div class="form-group">
         <label for="gender">Gender:</label>
-        <input type="radio" class="form-control" name="gender" value="male">Male
-        <input type="radio" class="form-control" name="gender" value="females">Female
+        <input type="radio" class="form-control" name="gender" <?=$row[7]=="male" ? "checked" : "";?> value="male">Male
+        <input type="radio" class="form-control" name="gender" <?=$row[7]=="female" ? "checked" : "";?> value="females">Female
       </div>
 
       <div class="form-group">
         <label for="address">Address:</label>
-        <textarea placeholder="address" class="form-control" name="address" rows="4" cols="50"></textarea>
+        <textarea placeholder="address" class="form-control" name="address" rows="4" cols="50"><?php echo $row[8];?></textarea>
       </div>
       <button class="btn btn-primary"><a href="dashboard.php" class="text-light">Back</a></button>
       <button type="submit" class="btn btn-primary">Save</button>
